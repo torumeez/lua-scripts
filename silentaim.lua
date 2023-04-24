@@ -1,4 +1,4 @@
-local hotkey = "t" -- toggle key
+local hotkey = "t" 
 local mouse = game.Players.LocalPlayer:GetMouse()
 
 
@@ -14,21 +14,21 @@ end
 end)
 
 
--- // Services
+
 local Players = game:GetService("Players")
 
--- // Vars
+
 local LocalPlayer = Players.LocalPlayer
 local accomidationfactor = 0.162231
--- // Silent Aim Module
+
 local SilentAim = loadstring(game:HttpGet("https://pastebin.com/raw/2f0mGbMP%22))()
 SilentAim.TeamCheck = false
--- // Metatable vars
+
 local mt = getrawmetatable(game)
 local backupindex = mt.index
 setreadonly(mt, false)
 
--- // Check if player is down
+
 SilentAim.checkSilentAim = function()
     local checkA = (SilentAim.SilentAimEnabled == true and SilentAim.Selected ~= LocalPlayer)
     local playerCharacter = SilentAim.Selected.Character
@@ -37,7 +37,7 @@ SilentAim.checkSilentAim = function()
     return (checkA and daHood)
 end
 
--- // Hook
+
 mt.index = newcclosure(function(t, k)
     if (t:IsA("Mouse") and (k == "Hit")) then
         print(t, k)
@@ -51,6 +51,6 @@ mt.index = newcclosure(function(t, k)
     return backupindex(t, k)
 end)
 
--- // Revert
+
 setreadonly(mt, true)
 getgenv().ValiantAimHacks.FOV = 27
